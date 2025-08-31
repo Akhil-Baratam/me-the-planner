@@ -21,20 +21,30 @@ export const uiSlice = createSlice({
   reducers: {
     setGlobalView: (state, action: PayloadAction<string>) => {
       const newGlobalView = action.payload;
-      if (state.globalView !== newGlobalView) {
-        state.globalView = newGlobalView;
+      if (state.globalView === newGlobalView) return;
 
-        if (newGlobalView === 'dashboard') {
-          state.nativeView = 'Dashboard';
-        } else {
-          const viewConfig = sidebarData[newGlobalView];
-          const firstNativeItem = viewConfig?.sections?.[0]?.items?.[0];
-          // Set nativeView to the first item, or the view's title, or a capitalized version of the view name
-          state.nativeView = firstNativeItem
-            ? firstNativeItem.view
-            : viewConfig?.title || newGlobalView.charAt(0).toUpperCase() + newGlobalView.slice(1);
-        }
+      state.globalView = newGlobalView;
+
+      const viewConfig = sidebarData[newGlobalView];
+
+      // Default to a capitalized title from the global view name
+      let newNativeView = newGlobalView.charAt(0).toUpperCase() + newGlobalView.slice(1);
+
+      if (newGlobalView === 'dashboard') {
+          newNativeView = 'Dashboard';
+      } else if (viewConfig) {
+          // Check if there are any items in any section
+          const firstItem = viewConfig.sections?.flatMap(s => s.items)?.[0];
+          if (firstItem) {
+              // If there are items, set the native view to the first one
+              newNativeView = firstItem.view;
+          } else {
+              // If there are no items (e.g., Settings, Profile), use the view's title
+              newNativeView = viewConfig.title;
+          }
       }
+      
+      state.nativeView = newNativeView;
     },
     setNativeView: (state, action: PayloadAction<string>) => {
       state.nativeView = action.payload;
