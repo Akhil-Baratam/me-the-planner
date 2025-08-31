@@ -1,5 +1,5 @@
 {
   "name": "Me",
-  "description": "A pixel-perfect replica of a modern, dark-themed to-do list application.",
+  "description": "A modern, dual-sidebar application built with React, Redux, and Tailwind CSS.",
   "requestFramePermissions": []
 }
