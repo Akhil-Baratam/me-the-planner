@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setGlobalView } from '../features/ui/uiSlice.ts';
 import type { RootState } from '../store/store.ts';
+import { NavLink } from 'react-router-dom';
 
 import LogoIcon from './icons/LogoIcon.tsx';
 import DashboardIcon from './icons/DashboardIcon.tsx';
@@ -30,37 +31,34 @@ const GlobalSidebar = () => {
                     <LogoIcon />
                 </a>
                 {navItems.map(item => (
-                    <a
+                    <NavLink
                         key={item.view}
-                        href="#"
-                        className={`w-11 h-11 rounded-lg grid place-items-center transition-colors duration-200 ${
-                            activeGlobalView === item.view
+                        to={`/${item.view}`}
+                        className={({ isActive }) => `w-11 h-11 rounded-lg grid place-items-center transition-colors duration-200 ${
+                            isActive
                                 ? 'bg-white/10 text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)]'
                                 : 'text-text-secondary hover:bg-accent-primary/20 hover:text-text-primary'
                         }`}
-                        data-global-view={item.view}
                         title={item.title}
                         onClick={() => handleNavClick(item.view)}
                     >
                         {item.icon}
-                    </a>
+                    </NavLink>
                 ))}
             </div>
             <div className="flex flex-col items-center gap-4 w-full">
-                <a
-                    href="#"
-                    className={`w-11 h-11 rounded-lg grid place-items-center transition-colors duration-200 ${
-                        activeGlobalView === 'settings'
-                            ? 'bg-white/10 text-white'
-                            : 'text-text-secondary hover:bg-accent-primary/20 hover:text-text-primary'
+                <NavLink
+                    to="/settings"
+                    className={({ isActive }) => `w-11 h-11 rounded-lg grid place-items-center transition-colors duration-200 ${
+                        isActive ? 'bg-white/10 text-white' : 'text-text-secondary hover:bg-accent-primary/20 hover:text-text-primary'
                     }`}
                     title="Settings"
                     onClick={() => handleNavClick('settings')}
                 >
                     <SettingsIcon />
-                </a>
-                <a
-                    href="#"
+                </NavLink>
+                <NavLink
+                    to="/profile"
                     className="global-nav-item profile"
                     title="Profile"
                     onClick={() => handleNavClick('profile')}
@@ -70,7 +68,7 @@ const GlobalSidebar = () => {
                         alt="User avatar" 
                         className="w-8 h-8 rounded-full border-2 border-border-color"
                     />
-                </a>
+                </NavLink>
             </div>
         </nav>
     );
