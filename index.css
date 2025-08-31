@@ -1,0 +1,250 @@
+:root {
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --bg-color: #0A0A0A;
+    --global-sidebar-bg: #141414;
+    --native-sidebar-bg: #191919;
+    --border-color: #262626;
+    --text-primary: #EAEAEA;
+    --text-secondary: #9B9B9B;
+    --text-tertiary: #6F6F6F;
+    --accent-blue: #3E82F7;
+    --active-item-bg: #2C2C2C;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.background-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.background-glow::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(200px);
+    opacity: 0.15;
+    width: 60vw;
+    height: 60vw;
+    max-width: 700px;
+    max-height: 700px;
+    background: var(--accent-blue);
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* --- Global Sidebar --- */
+.global-sidebar {
+    width: 68px;
+    flex-shrink: 0;
+    background-color: var(--global-sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.global-sidebar-top, .global-sidebar-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.global-nav-item {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    position: relative;
+}
+
+.global-nav-item:hover {
+    background-color: var(--active-item-bg);
+    color: var(--text-primary);
+}
+
+.global-nav-item.active {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.global-nav-item.profile img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+}
+
+/* --- Native Sidebar --- */
+.native-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background-color: var(--native-sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    transition: width 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+    z-index: 5;
+}
+
+.native-sidebar-header {
+    padding: 0 0.5rem 1.5rem 0.5rem;
+}
+
+.native-sidebar-header h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.native-nav-section {
+    margin-bottom: 2rem;
+}
+
+.native-nav-section h5 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.native-nav-section ul {
+    list-style: none;
+}
+
+.native-nav-item {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.native-nav-item:hover {
+    background-color: var(--active-item-bg);
+    color: var(--text-primary);
+}
+
+.native-nav-item.active {
+    background-color: var(--active-item-bg);
+    color: var(--text-primary);
+}
+
+
+/* --- Main Content --- */
+.main-content {
+    flex-grow: 1;
+    padding: 2rem 3rem;
+    overflow-y: auto;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.main-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.sidebar-toggle {
+    display: none; /* Hidden by default, shown in responsive */
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.25rem;
+}
+.sidebar-toggle:hover {
+    color: var(--text-primary);
+}
+
+
+.empty-view {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary);
+}
+.empty-view p {
+    font-size: 1.1rem;
+}
+
+/* --- Responsive Design --- */
+
+@media (max-width: 1024px) {
+    .native-sidebar {
+        position: absolute;
+        height: 100vh;
+        transform: translateX(-100%);
+        background-color: var(--native-sidebar-bg);
+    }
+    
+    .app-container.native-sidebar-visible .native-sidebar {
+        transform: translateX(0);
+        box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 1.5rem;
+    }
+    .main-header h1 {
+        font-size: 1.75rem;
+    }
+}

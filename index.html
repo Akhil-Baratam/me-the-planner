@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Sidebar Layout</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-glow"></div>
+    <div class="app-container">
+        <!-- Global Feature Sidebar (Leftmost) -->
+        <nav class="global-sidebar">
+            <div class="global-sidebar-top">
+                <a href="#" class="global-nav-item active" data-global-view="planner" title="Planner">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 3.25C12.5 2.83579 12.1642 2.5 11.75 2.5C11.3358 2.5 11 2.83579 11 3.25V20.75C11 21.1642 11.3358 21.5 11.75 21.5C12.1642 21.5 12.5 21.1642 12.5 20.75V3.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.25 10C4.83579 10 4.5 10.3358 4.5 10.75V20.75C4.5 21.1642 4.83579 21.5 5.25 21.5C5.66421 21.5 6 21.1642 6 20.75V10.75C6 10.3358 5.66421 10 5.25 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.25 7C17.8358 7 17.5 7.33579 17.5 7.75V20.75C17.5 21.1642 17.8358 21.5 18.25 21.5C18.6642 21.5 19 21.1642 19 20.75V7.75C19 7.33579 18.6642 7 18.25 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="global-nav-item" data-global-view="dashboard" title="Dashboard">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.75 6.75C4.75 5.64543 5.64543 4.75 6.75 4.75H17.25C18.3546 4.75 19.25 5.64543 19.25 6.75V17.25C19.25 18.3546 18.3546 19.25 17.25 19.25H6.75C5.64543 19.25 4.75 18.3546 4.75 17.25V6.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.25 9.25L10.75 12.75L8.75 10.75L6.25 13.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="global-nav-item" data-global-view="scheduler" title="Scheduler">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 3V4.5M16 3V4.5M3.75 9H20.25M4.5 21H19.5C19.9142 21 20.25 20.6642 20.25 20.25V7.5C20.25 7.08579 19.9142 6.75 19.5 6.75H4.5C4.08579 6.75 3.75 7.08579 3.75 7.5V20.25C3.75 20.6642 4.08579 21 4.5 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div class="global-sidebar-bottom">
+                 <a href="#" class="global-nav-item" data-global-view="settings" title="Settings">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8.25C10.2051 8.25 8.75 9.70507 8.75 11.5C8.75 13.2949 10.2051 14.75 12 14.75C13.7949 14.75 15.25 13.2949 15.25 11.5C15.25 9.70507 13.7949 8.25 12 8.25Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 18.25C16.8325 18.25 21.25 15.1832 21.25 11.5C21.25 7.81675 16.8325 4.75 12 4.75C7.16751 4.75 2.75 7.81675 2.75 11.5C2.75 15.1832 7.16751 18.25 12 18.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                 <a href="#" class="global-nav-item profile" data-global-view="profile" title="Profile">
+                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User avatar">
+                </a>
+            </div>
+        </nav>
+
+        <!-- Native Feature Sidebar -->
+        <aside class="native-sidebar">
+            <div class="native-sidebar-content" id="planner-native-view">
+                <div class="native-sidebar-header">
+                    <h4>Planner</h4>
+                </div>
+                <nav class="native-nav">
+                    <div class="native-nav-section">
+                        <h5>Horizons</h5>
+                        <ul>
+                            <li><a href="#" class="native-nav-item active" data-view="Today">Today</a></li>
+                            <li><a href="#" class="native-nav-item" data-view="Weeks">Weeks</a></li>
+                            <li><a href="#" class="native-nav-item" data-view="Months">Months</a></li>
+                            <li><a href="#" class="native-nav-item" data-view="Quarters">Quarters</a></li>
+                        </ul>
+                    </div>
+                    <div class="native-nav-section">
+                        <h5>My Boards</h5>
+                         <ul>
+                            <li><a href="#" class="native-nav-item" data-view="Finance Board">Finance</a></li>
+                            <li><a href="#" class="native-nav-item" data-view="Physical Board">Physical</a></li>
+                            <li><a href="#" class="native-nav-item" data-view="Purchase Board">Purchase</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="native-sidebar-content" id="scheduler-native-view" style="display: none;">
+                <div class="native-sidebar-header">
+                    <h4>Scheduler</h4>
+                </div>
+                 <nav class="native-nav">
+                    <div class="native-nav-section">
+                        <ul>
+                            <li><a href="#" class="native-nav-item" data-view="Calendar">Calendar</a></li>
+                            <li><a href="#" class="native-nav-item" data-view="Auto-Scheduler">Auto-Scheduler</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="native-sidebar-content" id="dashboard-native-view" style="display: none;">
+                <div class="native-sidebar-header">
+                    <h4>Dashboard</h4>
+                </div>
+            </div>
+             <div class="native-sidebar-content" id="settings-native-view" style="display: none;">
+                <div class="native-sidebar-header">
+                    <h4>Settings</h4>
+                </div>
+            </div>
+             <div class="native-sidebar-content" id="profile-native-view" style="display: none;">
+                <div class="native-sidebar-header">
+                    <h4>Profile</h4>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="main-header">
+                 <button class="sidebar-toggle" aria-label="Toggle sidebar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.75 12H20.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.75 6H20.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.75 18H20.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                 </button>
+                <h1 id="main-header-title">Today</h1>
+            </header>
+            <div id="view-content">
+                <div class="empty-view">
+                    <p>Welcome to Today's view.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
